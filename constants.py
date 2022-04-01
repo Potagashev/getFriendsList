@@ -1,14 +1,14 @@
-# Поддерживаемые типы для отчетов
 VALID_OUTPUT_TYPES = ['csv', 'tsv', 'json']
 
-# Ключи для получения данных из ответа на запрос к API VK, должны быть согласованны с заголовками
 KEYS = ["first_name", "last_name", "country", "city", "bdate", "sex"]
-
-# Заголовки для отчетных файлов
 TITLES = ["Имя", "Фамилия", "Страна", "Город", "Дата", "Пол"]
 
-# Входные данные
-TOKEN = ""
-USER_ID = ""
+URL = "https://api.vk.com/method/friends.get"
+V = '5.131'
+FIELDS = 'country, city, bdate, sex'
+ORDER = 'name'
+
+TOKEN = 'cd1bbea8d225d0b4ecf8f5550be363b1f55e9fdffc1cee652ecf25639cf7f4aacdb7144649f9bbf1ce306'
+USER_ID = "222622761"
 OUTPUT_TYPE = "csv"
-OUTPUT_PATH = "reports."
+OUTPUT_PATH = "report"

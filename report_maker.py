@@ -2,43 +2,46 @@ import csv
 import json
 import constants
 
+headers = constants.TITLES
 
-def to_json(data, header=None, output_path=constants.OUTPUT_PATH):
+
+def _dict_to_json(data, output_path=f'{constants.OUTPUT_PATH}.json'):
+    # output_path = set_extension('json', output_path)
     string = json.dumps(data, ensure_ascii=False, indent=4)
-    my_file = open(output_path, "w", encoding="utf-8")
-    my_file.write(string, )
-    my_file.close()
+    json_file = open(output_path, "w", encoding="utf-8")
+    json_file.write(string)
+    json_file.close()
 
 
-def to_csv(data, headers, output_path=constants.OUTPUT_PATH):
-    # pprint(data)
-    with open(output_path, 'w', newline='') as csvfile:
-        writer = csv.DictWriter(csvfile, fieldnames=headers)
-        writer.writeheader()
-        writer.writerows(data)
-
-
-def to_tsv(data, headers, output_path=constants.OUTPUT_PATH):
+def _dict_to_csv(data, output_path=f'{constants.OUTPUT_PATH}.csv'):
     with open(output_path, 'w', newline='', encoding="utf-8") as file:
-        writer = csv.writer(file, delimiter='\t')
+        writer = csv.writer(file, delimiter=',')
         writer.writerow(headers)
-
         for user in data:
             writer.writerow(user.values())
 
 
-def get_report_maker(format):
-    if format == 'CSV':
-        return to_csv
-    elif format == 'TSV':
-        return to_tsv
-    elif format == 'JSON':
-        return to_json
+def _dict_to_tsv(data, output_path=f'{constants.OUTPUT_PATH}.tsv'):
+    with open(output_path, 'w', newline='', encoding="utf-8") as file:
+        writer = csv.writer(file, delimiter='\t')
+        writer.writerow(headers)
+        for user in data:
+            writer.writerow(user.values())
+
+
+def _get_report_maker(format):
+    if format == 'csv':
+        return _dict_to_csv
+    elif format == 'tsv':
+        return _dict_to_tsv
+    elif format == 'json':
+        return _dict_to_json
     else:
-        raise ValueError(format)
+        return 0
 
 
 class ReportMaker:
-    def make_report(self, data, headers, format, output_path):
-        report_maker = get_report_maker(format)
-        return report_maker(data, headers, output_path)
+    def make_report(self, data, format, output_path):
+        # определяет, какой метод будет вызываться в зависимости от формата
+        report_maker = _get_report_maker(format)
+        return report_maker(data, output_path)
