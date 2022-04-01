@@ -10,5 +10,5 @@ ORDER = 'name'
 
 TOKEN = 'cd1bbea8d225d0b4ecf8f5550be363b1f55e9fdffc1cee652ecf25639cf7f4aacdb7144649f9bbf1ce306'
 USER_ID = "222622761"
-OUTPUT_TYPE = "csv"
-OUTPUT_PATH = "report"
+OUTPUT_TYPE = "json"
+OUTPUT_PATH = "report.json"
