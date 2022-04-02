@@ -28,6 +28,10 @@ def dict_to_tsv(data, output_path=f'{constants.OUTPUT_PATH}.tsv'):
             writer.writerow(user.values())
 
 
+def raise_value_error(data, output_path):
+    print('\033[31mERROR: Данный формат файла не поддерживается')
+
+
 def get_report_maker(format):
     if format == 'csv':
         return dict_to_csv
@@ -36,7 +40,7 @@ def get_report_maker(format):
     elif format == 'json':
         return dict_to_json
     else:
-        raise ValueError
+        return raise_value_error
 
 
 class ReportMaker:

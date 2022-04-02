@@ -21,7 +21,7 @@ class SerializingTestCase(TestCase):
                 'sex': 'Мужчина'
             }
         ]
-        report_maker._dict_to_json(data=_dict, output_path='test_reports/real.json')
+        report_maker.dict_to_json(data=_dict, output_path='test_reports/real.json')
 
         with open('test_reports/real.json', encoding='utf-8') as json_file:
             real = json.load(json_file)
@@ -44,7 +44,7 @@ class SerializingTestCase(TestCase):
                 'sex': 'Мужчина'
             }
         ]
-        report_maker._dict_to_csv(data=_dict, output_path='test_reports/real.csv')
+        report_maker.dict_to_csv(data=_dict, output_path='test_reports/real.csv')
 
         with open('test_reports/real.csv', encoding='utf-8') as csv_file:
             real = csv_file.readlines()
@@ -67,7 +67,7 @@ class SerializingTestCase(TestCase):
                 'sex': 'Мужчина'
             }
         ]
-        report_maker._dict_to_tsv(data=_dict, output_path='test_reports/real.tsv')
+        report_maker.dict_to_tsv(data=_dict, output_path='test_reports/real.tsv')
 
         with open('test_reports/real.tsv', encoding='utf-8') as csv_file:
             real = csv_file.readlines()
