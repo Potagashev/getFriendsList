@@ -10,6 +10,6 @@ ORDER = 'name'
 
 TOKEN = ''
 USER_ID = ''
-OUTPUT_FORMAT = 'json'
-OUTPUT_PATH = 'reports/report.json'
+OUTPUT_FORMAT = 'csv'
+OUTPUT_PATH = 'reports/report.csv'
 MAX_COUNT = 100
